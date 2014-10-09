@@ -1,17 +1,22 @@
 language: php
 
+addons:
+   firefox: "23.0"
 
 php:
   - 5.4
 
 services:
   - mysql
+  - selenium
 
 addons:
   hosts:
     - example.org
 
 before_script:
+  - "export DISPLAY=:99.0"
+  - "/etc/init.d/xvfb start"
   - sudo apt-get update
   - sudo apt-get install nginx
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -25,3 +30,4 @@ script:
 
 after_script:
   - sudo service nginx stop
+  - "/etc/init.d/xvfb stop"
