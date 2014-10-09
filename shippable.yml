@@ -15,8 +15,6 @@ addons:
     - example.org
 
 before_script:
-  - "export DISPLAY=:99.0"
-  - "/etc/init.d/xvfb start"
   - sudo apt-get update
   - sudo apt-get install nginx
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -24,6 +22,8 @@ before_script:
   - sudo cp -f config/nginx.conf /etc/nginx/sites-enabled/site-nginx.conf
   - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
   - sudo service nginx start
+  - "export DISPLAY=:99.0"
+  - "/etc/init.d/xvfb start"
 
 after_script:
   - sudo service nginx stop
