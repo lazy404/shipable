@@ -26,6 +26,7 @@ before_script:
   - sudo service nginx start
   - "export DISPLAY=:99.0"
   - "/etc/init.d/xvfb start"
+  - npm install nightwatch
 
 script:
   - npm test
