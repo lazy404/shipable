@@ -9,7 +9,6 @@ php:
   - 5.4
 
 services:
-  - mysql
   - selenium
 
 addons:
@@ -29,7 +28,7 @@ before_script:
   - npm install nightwatch
 
 script:
-  - npm test ./nightwatch.json
+  - npm test
 
 after_script:
   - sudo service nginx stop
