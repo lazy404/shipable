@@ -1,6 +1,6 @@
 #language: php
 
-language: node_js
+language: node_js php
 
 addons:
    firefox: "23.0"
