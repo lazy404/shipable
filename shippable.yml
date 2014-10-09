@@ -1,6 +1,6 @@
 #language: php
 
-language: node_js php
+language: php
 
 addons:
    firefox: "23.0"
@@ -26,6 +26,10 @@ before_script:
   - sudo service nginx start
   - "export DISPLAY=:99.0"
   - "/etc/init.d/xvfb start"
+
+script:
+  - ./selenium.sh
+
 
 after_script:
   - sudo service nginx stop
