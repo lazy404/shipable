@@ -1,4 +1,4 @@
-language: php
+#language: php
 
 addons:
    firefox: "23.0"
