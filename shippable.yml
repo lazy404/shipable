@@ -28,8 +28,7 @@ before_script:
   - "/etc/init.d/xvfb start"
 
 script:
-  - ./selenium.sh
-
+  - npm test
 
 after_script:
   - sudo service nginx stop
