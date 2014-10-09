@@ -3,7 +3,7 @@
 language: php
 
 addons:
-   firefox: "23.0"
+   firefox: "22.0"
 
 php:
   - 5.4
