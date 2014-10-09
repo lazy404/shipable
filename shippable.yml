@@ -1,0 +1,27 @@
+language: php
+
+
+php:
+  - 5.4
+
+services:
+  - mysql
+
+addons:
+  hosts:
+    - example.org
+
+before_script:
+  - sudo apt-get update
+  - sudo apt-get install nginx
+  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+  - sudo cp -f config/site-nginx.conf /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo service nginx start
+
+script:
+  - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage tests/ExampleTest.php
+
+after_script:
+  - sudo service nginx stop
