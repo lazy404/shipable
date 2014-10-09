@@ -29,7 +29,7 @@ before_script:
   - npm install nightwatch
 
 script:
-  - npm test
+  - npm test ./nightwatch.json
 
 after_script:
   - sudo service nginx stop
