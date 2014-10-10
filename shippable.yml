@@ -30,7 +30,7 @@ before_script:
 script:
   - "export DISPLAY=:99.0"
   - "/etc/init.d/xvfb start"
-  - npm test
+  - npm test -c ./nightwatch.json
 
 after_script:
   - sudo service nginx stop
