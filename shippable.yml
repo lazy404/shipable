@@ -1,9 +1,7 @@
-#language: php
-
 language: php
 
 addons:
-   firefox: "22.0"
+   firefox: "28.0"
 
 php:
   - 5.4
@@ -24,11 +22,13 @@ before_script:
   - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
   - sudo service nginx start
   - "export DISPLAY=:99.0"
-  - "/etc/init.d/xvfb start"
-  - npm install nightwatch
+#  - "/etc/init.d/xvfb start"
+#  - npm install nightwatch
 
 script:
-  - npm test ./
+  - "export DISPLAY=:99.0"
+  - "/etc/init.d/xvfb start"
+#  - npm test ./
 
 after_script:
   - sudo service nginx stop
